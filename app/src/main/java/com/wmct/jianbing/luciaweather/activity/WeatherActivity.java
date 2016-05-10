@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.wmct.jianbing.luciaweather.R;
 import com.wmct.jianbing.luciaweather.model.City;
+import com.wmct.jianbing.luciaweather.service.AutoUpdateService;
 import com.wmct.jianbing.luciaweather.util.HttpCallbackListener;
 import com.wmct.jianbing.luciaweather.util.HttpUtil;
 import com.wmct.jianbing.luciaweather.util.Utility;
@@ -159,6 +160,8 @@ public class WeatherActivity extends Activity implements View.OnClickListener{
         currentDateText.setText(prefs.getString("current_date", ""));
         weatherInfoLayout.setVisibility(View.VISIBLE);
         cityNameText.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
     @Override
